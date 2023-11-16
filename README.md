@@ -1,8 +1,56 @@
-# quadratic-funding
+# quadratic-fuding
 
-This project has been generated using AlgoKit. See below for default getting started instructions.
+## Abstract
 
-# Setup
+The `quadratic-funding` smart contract is an innovative solution designed for the Algorand blockchain, aimed at revolutionizing the way public goods - NGOs and initiatives, in the case of GiveCup - are funded. By leveraging the quadratic funding mechanism, this contract democratically amplifies the impact of small donors, ensuring that funding decisions reflect the community's collective preferences.
+
+Quadratic funding addresses the issue of resource allocation in public goods by valuing the number of supporters over the size of their wallets. It democratizes the funding process, making it more inclusive and reflective of the community's needs and preferences. This approach is particularly effective in decentralized ecosystems like blockchain, where community consensus is a cornerstone.
+
+## 🔗 Features
+
+- **🔄 Funding Round Management**: Allows the contract owner to start and end funding rounds.
+- **💰 Donation Tracking**: Tracks donations made to various organizations during funding rounds.
+- **🏢 Organization Management**: Enables the owner to add organizations eligible to receive donations.
+- **🔍 User Donation Insights**: Users can view their total donations to specific organizations.
+
+## 🚀 Usage
+
+### Contract Deployment
+
+Deploy the smart contract on the Algorand network. The deployment will initialize the global state, including the funding round status and the list of organizations.
+
+### Adding Organizations
+
+```python
+@app.external
+def add_organization(organization: abi.Address) -> Expr:
+    # Function implementation...
+```
+
+- **Parameters**:
+  - `organization`: The address of the organization to be added.
+
+### Making Donations
+
+```python
+@app.external
+def donate(organization: abi.Address, amount: abi.Uint64) -> Expr:
+    # Function implementation...
+```
+
+- **Parameters**:
+  - `organization`: The address of the organization to receive the donation.
+  - `amount`: The amount to be donated.
+
+### Retrieving Donation Information
+
+```python
+@app.external(read_only=True)
+def get_user_donation_to_organization(user: abi.Address, organization: abi.Address, *, output: abi.Uint64) -> Expr:
+    # Function implementation...
+```
+
+## 🏗 Setup
 
 ### Initial setup
 
@@ -41,7 +89,7 @@ This project has been generated using AlgoKit. See below for default getting sta
 
 > For guidance on `smart_contracts` folder and adding new contracts to the project please see [README](smart_contracts/README.md) on the respective folder.
 
-# Tools
+# 🛠 Tools
 
 This project makes use of Python to build Algorand smart contracts. The following tools are in use:
 
@@ -53,5 +101,4 @@ This project makes use of Python to build Algorand smart contracts. The followin
 - [Poetry](https://python-poetry.org/): Python packaging and dependency management.- [Black](https://github.com/psf/black): A Python code formatter.
 - [pytest](https://docs.pytest.org/): Automated testing.
 - [pip-audit](https://pypi.org/project/pip-audit/): Tool for scanning Python environments for packages with known vulnerabilities.
-It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
-
+  It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
